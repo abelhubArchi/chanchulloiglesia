@@ -1,0 +1,21 @@
+{
+  "name": "Biblia Reina Valera",
+  "short_name": "Biblia RV",
+  "description": "Herramienta de estudio bíblico offline",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192'><rect width='192' height='192' fill='%233b82f6'/><text x='96' y='110' font-size='60' text-anchor='middle' fill='white'>📖</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'><rect width='512' height='512' fill='%233b82f6'/><text x='256' y='280' font-size='150' text-anchor='middle' fill='white'>📖</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+<div class="search-container">
+    <h1 class="search-title">Biblia Reina Valera</h1>
+    
+    <div class="search-bar-wrapper">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar un libro o versículo... (Ej. Juan 3:16)" autocomplete="off">
+        <div id="suggestionsBox" class="suggestions-box">
+            <!-- Sugerencias dinámicas -->
+        </div>
+    </div>
+    
+    <div class="manual-search">
+        <div class="select-group">
+            <label for="bookSelect">Libro</label>
+            <select id="bookSelect">
+                <option value="">Selecciona...</option>
+                <option value="43">Juan</option>
+                <!-- Más libros dinámicamente -->
+            </select>
+        </div>
+        <div class="select-group">
+            <label for="chapterSelect">Capítulo</label>
+            <select id="chapterSelect" disabled>
+                <option value="">--</option>
+            </select>
+        </div>
+        <div class="select-group">
+            <label for="verseSelect">Versículo</label>
+            <select id="verseSelect" disabled>
+                <option value="">--</option>
+            </select>
+        </div>
+        <button id="manualSearchBtn" class="btn btn-primary btn-search">
+            <i class="fas fa-search"></i> Buscar
+        </button>
+    </div>
+</div>

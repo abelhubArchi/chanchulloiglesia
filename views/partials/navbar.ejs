@@ -1,0 +1,16 @@
+<nav class="navbar">
+    <div class="logo">
+        <a href="/">Biblia <span>Reina Valera</span></a>
+    </div>
+    <ul class="nav-links">
+        <li><a href="/" class="<%= page === 'home' ? 'active' : '' %>">Inicio</a></li>
+        <li><a href="/biblia" class="<%= page === 'biblia' ? 'active' : '' %>">Biblia</a></li>
+        <li><a href="/temas" class="<%= page === 'temas' ? 'active' : '' %>">Temas</a></li>
+        <li><a href="/personajes" class="<%= page === 'personajes' ? 'active' : '' %>">Personajes</a></li>
+    </ul>
+    <div class="nav-actions">
+        <button id="themeToggle" class="btn-icon" title="Cambiar tema">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</nav>
