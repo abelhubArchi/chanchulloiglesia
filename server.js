@@ -158,26 +158,31 @@ app.get('/personajes', (req, res) => {
     res.render('personajes', { page: 'personajes', title: 'Personajes | Reina Valera' });
 });
 
-// Iniciar servidor
-app.listen(port, '0.0.0.0', () => {
-    const os = require('os');
-    const networkInterfaces = os.networkInterfaces();
-    let localIp = 'localhost';
-    
-    for (const interfaceName in networkInterfaces) {
-        const interfaces = networkInterfaces[interfaceName];
-        for (const iface of interfaces) {
-            if (iface.family === 'IPv4' && !iface.internal) {
-                localIp = iface.address;
-                break;
+// Iniciar servidor local (Ignorado en Vercel)
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, '0.0.0.0', () => {
+        const os = require('os');
+        const networkInterfaces = os.networkInterfaces();
+        let localIp = 'localhost';
+        
+        for (const interfaceName in networkInterfaces) {
+            const interfaces = networkInterfaces[interfaceName];
+            for (const iface of interfaces) {
+                if (iface.family === 'IPv4' && !iface.internal) {
+                    localIp = iface.address;
+                    break;
+                }
             }
+            if (localIp !== 'localhost') break;
         }
-        if (localIp !== 'localhost') break;
-    }
 
-    console.log(`\n=========================================`);
-    console.log(`Biblia Reina Valera corriendo en:`);
-    console.log(`- Local: http://localhost:${port}`);
-    console.log(`- Red (Móvil): http://${localIp}:${port}`);
-    console.log(`=========================================\n`);
-});
+        console.log(`\n=========================================`);
+        console.log(`Biblia Reina Valera corriendo en:`);
+        console.log(`- Local: http://localhost:${port}`);
+        console.log(`- Red (Móvil): http://${localIp}:${port}`);
+        console.log(`=========================================\n`);
+    });
+}
+
+// Exportar para Vercel Serverless Functions
+module.exports = app;
