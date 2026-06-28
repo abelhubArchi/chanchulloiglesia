@@ -196,6 +196,91 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ---- Modal y Generación de Prompts (Directo al Grano) ----
+    const promptModal = document.getElementById('promptModal');
+    const closeModal = document.getElementById('closeModal');
+    const promptTextarea = document.getElementById('promptTextarea');
+    const copyPromptBtn = document.getElementById('copyPromptBtn');
+
+    const contextContexto = "Eres mi asistente personal. Quiero un texto PERFECTO, DIRECTO AL GRANO, sin preámbulos, listo para que yo lo lea. Habla en primera persona (yo). Mi contexto: soy estudiante de derecho, asisto a la iglesia Vida Nueva, trabajo muchísimo y he sufrido bastante sin ayuda de nadie. Hazlo como un comentario personal breve, NO como sermón ni enseñanza religiosa.\n\nBasado en el versículo {verse}: '{text}':\n\n";
+
+    const promptTemplates = {
+        explicacion: contextContexto + "Explícame de forma extremadamente directa y concisa qué significa este versículo para mi vida diaria.",
+        devocional: contextContexto + "Escribe una breve reflexión personal e íntima sobre cómo este versículo me da fuerzas en medio de mi soledad y cansancio.",
+        aplicacion_practica: contextContexto + "Dame exactamente 2 puntos breves y prácticos de cómo aplico esto hoy en mi trabajo y en mis estudios de derecho.",
+        estudio_profundo: contextContexto + "Haz un análisis muy puntual desde una perspectiva de justicia o leyes (por mis estudios de derecho), extrayendo la lógica principal del pasaje."
+    };
+
+    document.querySelectorAll('.tool-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const type = card.getAttribute('data-prompt-type');
+            if (type && promptTemplates[type]) {
+                const currentVerseRef = verseTitle ? verseTitle.textContent : '';
+                const currentVerseText = verseText ? verseText.textContent : '';
+                
+                let prompt = promptTemplates[type]
+                    .replace('{verse}', currentVerseRef)
+                    .replace('{text}', currentVerseText);
+                
+                promptTextarea.value = prompt;
+                promptModal.classList.remove('hidden');
+                promptModal.classList.add('show');
+            }
+        });
+    });
+
+    const customPromptInput = document.getElementById('customPromptInput');
+    const customPromptBtn = document.getElementById('customPromptBtn');
+
+    if (customPromptBtn && customPromptInput) {
+        customPromptBtn.addEventListener('click', () => {
+            const customText = customPromptInput.value.trim();
+            if (customText) {
+                const currentVerseRef = verseTitle ? verseTitle.textContent : '';
+                const currentVerseText = verseText ? verseText.textContent : '';
+                
+                let prompt = contextContexto
+                    .replace('{verse}', currentVerseRef)
+                    .replace('{text}', currentVerseText) + "Requerimiento exacto: " + customText;
+                
+                promptTextarea.value = prompt;
+                promptModal.classList.remove('hidden');
+                promptModal.classList.add('show');
+            } else {
+                alert("Por favor escribe tu petición específica.");
+            }
+        });
+    }
+
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            promptModal.classList.add('hidden');
+            promptModal.classList.remove('show');
+        });
+    }
+
+    if (promptModal) {
+        promptModal.addEventListener('click', (e) => {
+            if (e.target === promptModal) {
+                promptModal.classList.add('hidden');
+                promptModal.classList.remove('show');
+            }
+        });
+    }
+
+    if (copyPromptBtn) {
+        copyPromptBtn.addEventListener('click', () => {
+            promptTextarea.select();
+            document.execCommand('copy');
+            
+            const originalText = copyPromptBtn.innerHTML;
+            copyPromptBtn.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+            setTimeout(() => {
+                copyPromptBtn.innerHTML = originalText;
+            }, 2000);
+        });
+    }
+
     // ---- PWA Install Logic ----
     let deferredPrompt;
     const installBanner = document.getElementById('installBanner');

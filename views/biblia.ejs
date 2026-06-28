@@ -21,5 +21,34 @@
         </button>
     </div>
     
-
+    <div class="tools-section">
+        <h2 class="tools-title">Generar Comentario Personal (IA)</h2>
+        <div class="tools-grid">
+            <div class="tool-card" data-prompt-type="explicacion">
+                <i class="fas fa-bolt tool-icon"></i>
+                <span class="tool-name">Al Grano: Explicación Directa</span>
+            </div>
+            <div class="tool-card" data-prompt-type="devocional">
+                <i class="fas fa-heart tool-icon"></i>
+                <span class="tool-name">Devocional Íntimo</span>
+            </div>
+            <div class="tool-card" data-prompt-type="aplicacion_practica">
+                <i class="fas fa-briefcase tool-icon"></i>
+                <span class="tool-name">Aplicación: Estudio y Trabajo</span>
+            </div>
+            <div class="tool-card" data-prompt-type="estudio_profundo">
+                <i class="fas fa-search tool-icon"></i>
+                <span class="tool-name">Análisis Jurídico/Lógico</span>
+            </div>
+        </div>
+        
+        <div class="custom-prompt-section" style="margin-top: 2rem;">
+            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-color);">Petición Específica</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">¿Qué necesitas saber exactamente de este pasaje?</p>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="customPromptInput" style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-color);" placeholder="Ej. Dame 2 puntos de por qué es justo...">
+                <button id="customPromptBtn" class="btn btn-primary"><i class="fas fa-magic"></i> Generar</button>
+            </div>
+        </div>
+    </div>
 </div>

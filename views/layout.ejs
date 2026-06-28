@@ -54,6 +54,30 @@
         <%- include('partials/sidebar-right') %>
     </div>
 
+    <!-- Modal para Prompts -->
+    <div id="promptModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Prompt Generado</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <textarea id="promptTextarea" readonly></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="copyPromptBtn">
+                    <i class="fas fa-copy"></i> Copiar Prompt
+                </button>
+                <a href="https://chatgpt.com/" target="_blank" class="btn btn-outline" id="openChatGptBtn">
+                    Abrir ChatGPT
+                </a>
+                <a href="https://gemini.google.com/" target="_blank" class="btn btn-outline" id="openGeminiBtn">
+                    Abrir Gemini
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/app.js"></script>
 </body>
 </html>
